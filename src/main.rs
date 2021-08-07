@@ -1,11 +1,19 @@
+use std::env::args;
+use std::path::PathBuf;
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let t = std::thread::spawn(|| {
-        let f = std::fs::File::open("/Users/clark/code/manix/Root_Vase.stl.torrent").unwrap();
+        tracing_subscriber::fmt::init();
+        let mut a = args();
+        let _program_name = a.next();
+        let t = a.next().unwrap();
+        let f = std::fs::File::open(t).unwrap();
 
         let options = manix::Options::default();
         let mut manix = manix::blocking_client(options);
 
-        let out = Box::new(std::io::Cursor::new(vec![]));
+        // let out = Box::new(std::io::Cursor::new(vec![]));
+        let out = PathBuf::from("/home/clark/code/personal/manix-cli/Root_Vase.stl");
 
         let torrent = manix.add_torrent(f, out).unwrap();
 

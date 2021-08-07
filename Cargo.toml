@@ -6,5 +6,8 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-manix = { path = "/Users/clark/code/manix" }
+# manix = { path = "/Users/clark/code/manix" }
+manix = { path = "/home/clark/code/personal/manix" }
 tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = "0.2"
